@@ -7,8 +7,13 @@
 
 html {
   font-size: 32px;
+  background-color: #3a4764;
 }
 
 body {
   margin: 0;
+}
+
+button {
+  font-family: var(--font-league-spartan);
 }

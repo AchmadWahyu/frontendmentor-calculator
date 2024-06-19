@@ -1,5 +1,7 @@
 .main {
-  background-color: #3a4764;
+  height: 100%;
+  max-width: 540px;
+  margin: 0 auto;
 }
 
 .header_container {
@@ -22,7 +24,6 @@
 }
 
 .panel_content {
-  font-size: 32px;
   font-weight: bold;
   color: #ffffff;
   text-align: right;
@@ -37,18 +38,42 @@
   background-color: #232c43;
   padding: 24px;
   border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 12px;
+
+  > button:nth-child(17) {
+    grid-column: 1 / span 2;
+  }
+
+  > button:nth-child(18) {
+    grid-column: 3 / span 2;
+  }
 }
 
-.key {
-  background-color: #eae3dc;
-  color: #444B5A;
-  width: 64px;
-  height: 64px;
-  font-size: 32px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  box-shadow: 0px 4px 0px 0px #B3A59A;
+.key_text {
+  background-color: #637097;
+  box-shadow: 0px 4px 0px 0px #404e72;
+  color: #ffffff;
+  font-size: 0.5rem;
+}
+
+.key_equal_sign {
+  background-color: #d03f2f;
+  box-shadow: 0px 4px 0px 0px #93261a;
+  color: #ffffff;
+  font-size: 0.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .panel {
+    padding: 36px 32px;
+    height: 128px;
+  }
+
+  .keys {
+    padding: 32px;
+    grid-gap: 24px;
+  }
 }
