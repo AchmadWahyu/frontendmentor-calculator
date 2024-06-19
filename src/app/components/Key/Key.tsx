@@ -13,9 +13,11 @@ const Key = ({
   onClick: () => void;
   className?: string;
 }) => (
-  <button onClick={onClick} className={cn(styles.key, className)}>
-    {children}
-  </button>
+  <div className={styles.key_container}>
+    <button onClick={onClick} className={cn(styles.key, className)}>
+      {children}
+    </button>
+  </div>
 );
 
 export default Key;
