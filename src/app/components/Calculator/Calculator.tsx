@@ -4,6 +4,8 @@ import Key from '../Key/Key';
 
 import styles from './Calculator.module.scss';
 
+const symbolRegExp = /[+*\/-]/;
+
 const Calculator = () => {
   const [panelValue, setPanelValue] = useState('');
 
@@ -28,9 +30,13 @@ const Calculator = () => {
           value={panelValue}
           onChange={() => {}}
           className={styles.panel}
-          onKeyDown={e => {
-            if(!isNaN(Number(e?.key))) {
-              setPanelValue(panelValue + e?.key)
+          onKeyDown={(e) => {
+            if (!isNaN(Number(e?.key))) {
+              // numbers key
+              setPanelValue(panelValue + e?.key);
+            } else if (symbolRegExp.test(e?.key)) {
+              // symbol key
+              setPanelValue(panelValue + ` ${e?.key} `);
             }
           }}
         />
