@@ -24,9 +24,16 @@ const Calculator = () => {
   return (
     <div className={styles.container}>
       <div className={styles.panel_container}>
-        <div className={styles.panel}>
-          <p className={styles.panel_content}>{panelValue}</p>
-        </div>
+        <input
+          value={panelValue}
+          onChange={() => {}}
+          className={styles.panel}
+          onKeyDown={e => {
+            if(!isNaN(Number(e?.key))) {
+              setPanelValue(panelValue + e?.key)
+            }
+          }}
+        />
       </div>
 
       <div className={styles.keys_container}>

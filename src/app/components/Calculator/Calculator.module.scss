@@ -9,13 +9,10 @@
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
-}
-
-.panel_content {
-  font-weight: bold;
+  font-size: 1rem;
   color: #ffffff;
   text-align: right;
-  width: 100%;
+  font-family: var(--font-league-spartan);
 }
 
 .keys_container {
