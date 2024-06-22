@@ -23,6 +23,10 @@ const Calculator = () => {
     }
   };
 
+  const count = () => {
+    setPanelValue(String(eval?.(`"use strict"; ${panelValue}`)));
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.panel_container}>
@@ -31,13 +35,20 @@ const Calculator = () => {
           onChange={() => {}}
           className={styles.panel}
           onKeyDown={(e) => {
-            if (!isNaN(Number(e?.key))) {
-              // numbers key
-              setPanelValue(panelValue + e?.key);
-            } else if (symbolRegExp.test(e?.key)) {
-              // symbol key
-              setPanelValue(panelValue + ` ${e?.key} `);
-            }
+            console.log('e: ', e);
+            // numbers
+            if (!isNaN(Number(e?.key)))
+              return setPanelValue(panelValue + e?.key);
+            
+            // math operation
+            if (symbolRegExp.test(e?.key))
+              return setPanelValue(panelValue + ` ${e?.key} `);
+            
+            // result
+            if (e?.key === 'Enter' || e?.key === '=') return count();
+            
+            // delete
+            if(e?.key === 'Backspace') return del();
           }}
         />
       </div>
@@ -69,12 +80,7 @@ const Calculator = () => {
           <Key className={styles.key_text} onClick={() => setPanelValue('')}>
             RESET
           </Key>
-          <Key
-            className={styles.key_equal_sign}
-            onClick={() => {
-              setPanelValue(String(eval?.(`"use strict"; ${panelValue}`)));
-            }}
-          >
+          <Key className={styles.key_equal_sign} onClick={count}>
             =
           </Key>
         </div>
